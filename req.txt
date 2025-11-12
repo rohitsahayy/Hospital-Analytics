@@ -1,7 +1,7 @@
 langchain
-langchain-community
-langchain-groq
+langchain_community
+langchain_groq
+langchain_experimental
+langchain_core
 streamlit
-langchain-experimental
-langchain-classic
 pandas
