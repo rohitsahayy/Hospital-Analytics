@@ -1,7 +1,12 @@
 import streamlit as st
 import sqlite3
-from langchain_community.utilities import SQLDatabase
-from langchain_groq import ChatGroq
+import pandas as pd
+from langchain_community.chat_models import ChatGroq  # if not found, use langchain_groq
+try:
+    from langchain_community.utilities import SQLDatabase
+except ImportError:
+    from langchain.sql_database import SQLDatabase  # fallback for older/newer installs
+
 from langchain_experimental.sql import SQLDatabaseChain
 from langchain_core.prompts import PromptTemplate
 
@@ -121,5 +126,6 @@ if st.button("Run Query"):
                     st.info("No results found for this query.")
             except Exception as e:
                 st.error(f"Error while processing query: {e}")
+
 
 
